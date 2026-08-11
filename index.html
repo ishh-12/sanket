@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SANKET | Digital Doctor for Computers</title>
+    <meta
+      name="description"
+      content="SANKET creates a health signature for your computer, diagnoses abnormalities, explains root causes, repairs safely, and predicts future problems."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="sanket-stage" aria-hidden="true"></canvas>
+    <div class="film-grain" aria-hidden="true"></div>
+    <div class="cursor-field" aria-hidden="true"></div>
+
+    <header class="nav">
+      <a class="brand" href="#hero" aria-label="SANKET home">
+        <span></span>
+        SANKET
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#project">PROJECT</a>
+        <a href="#works">SYSTEM</a>
+        <a href="#demo">DEMO</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        MENU
+      </button>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+        <a href="#project">PROJECT</a>
+        <a href="#works">SYSTEM</a>
+        <a href="#demo">DEMO</a>
+      </nav>
+      <p class="online"><span></span>SYSTEM ONLINE</p>
+    </header>
+
+    <main>
+      <section class="chapter hero active" id="hero" data-scene="hero">
+        <div class="story story-left">
+          <p class="kicker">SANKET</p>
+          <p class="product-line">AI-POWERED DIGITAL DOCTOR FOR COMPUTERS</p>
+          <h1>YOUR COMPUTER.<br />HAS A HEALTH SIGNATURE.</h1>
+          <p class="lede">SANKET learns what healthy means for your machine.</p>
+          <a class="button magnetic" href="#project"><span></span>EXPLORE DEVICE DNA</a>
+        </div>
+        <p class="scroll-note">SCROLL TO EXPLORE</p>
+      </section>
+
+      <section class="chapter" id="project" data-scene="build">
+        <div class="story story-left">
+          <p class="kicker">BUILD THE DEVICE DNA</p>
+          <h2>EVERY COMPUTER<br />IS DIFFERENT.</h2>
+          <p class="lede">SANKET learns what healthy means for yours.</p>
+          <p class="state">DEVICE DNA INITIALIZED</p>
+        </div>
+        <div class="micro-list">
+          <span>HARDWARE</span>
+          <span>SOFTWARE</span>
+          <span>PERFORMANCE</span>
+          <span>NETWORK</span>
+          <span>BEHAVIOR</span>
+        </div>
+      </section>
+
+      <section class="chapter" data-scene="healthy">
+        <div class="story story-right">
+          <p class="kicker">BASELINE HEALTHY</p>
+          <h2>CALM IS<br />A DATA STATE.</h2>
+          <p class="lede">CPU 42%. Memory 51%. Storage 68%. Network 97%.</p>
+        </div>
+        <div class="metric-strip" aria-label="Healthy baseline metrics">
+          <span>CPU <b>42%</b></span>
+          <span>MEMORY <b>51%</b></span>
+          <span>STORAGE <b>68%</b></span>
+          <span>NETWORK <b>97%</b></span>
+        </div>
+      </section>
+
+      <section class="chapter" data-scene="notice">
+        <div class="story story-left">
+          <p class="kicker">SANKET NOTICES</p>
+          <h2>THEN SOMETHING<br />CHANGED.</h2>
+          <p class="change">MEMORY <span>51%</span> <i></i> <strong>91%</strong></p>
+          <p class="state amber">ANOMALY DETECTED</p>
+        </div>
+      </section>
+
+      <section class="chapter" id="works" data-scene="why">
+        <div class="story story-left wide">
+          <p class="kicker">FIND THE WHY</p>
+          <h2>WE DON'T JUST<br />FIND THE PROBLEM.</h2>
+          <p class="massive">WE FIND THE WHY.</p>
+        </div>
+        <div class="evidence-stack">
+          <span>RAM USAGE <b>91%</b></span>
+          <span>APPLICATION X <b>13.8 GB</b></span>
+          <span>RECENT CHANGE <b>+1 EXTENSION</b></span>
+          <strong>ROOT CAUSE LIKELY IDENTIFIED</strong>
+        </div>
+      </section>
+
+      <section class="chapter" id="technology" data-scene="storage">
+        <div class="story story-right">
+          <p class="kicker">STORAGE INTELLIGENCE</p>
+          <h2>YOUR DISK<br />HAS STRUCTURE.</h2>
+          <p class="lede">512 GB total. 467 GB used. Downloads reveal 16.2 GB potentially recoverable.</p>
+          <a class="button magnetic" href="#heal"><span></span>REVIEW STORAGE</a>
+        </div>
+        <div class="storage-facts">
+          <span>DOWNLOADS <b>38 GB</b></span>
+          <span>LARGE FILES <b>19 GB</b></span>
+          <span>DUPLICATES <b>7 GB</b></span>
+          <span>OLD INSTALLERS <b>5 GB</b></span>
+          <strong>16.2 GB RECOVERABLE</strong>
+        </div>
+      </section>
+
+      <section class="chapter" id="heal" data-scene="heal">
+        <div class="story story-left">
+          <p class="kicker">SAFE SELF-HEALING</p>
+          <h2>FIX IT.<br />SAFELY.</h2>
+          <p class="lede">AI recommends. The Safety Engine validates. You approve.</p>
+        </div>
+        <div class="repair-line">
+          <span>DIAGNOSE</span>
+          <span>SAFETY CHECK</span>
+          <span>APPROVE</span>
+          <span>REPAIR</span>
+          <span>VERIFY</span>
+        </div>
+      </section>
+
+      <section class="chapter" data-scene="restore">
+        <div class="story story-center">
+          <p class="kicker">THE CURE VERIFIED</p>
+          <h2>SYSTEM<br />RESTORED.</h2>
+          <div class="health-count">
+            <span>63</span>
+            <span>74</span>
+            <span>86</span>
+            <strong>91</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" data-scene="predict">
+        <div class="story story-left">
+          <p class="kicker">PREDICTIVE HEALTH</p>
+          <h2>DON'T WAIT<br />FOR FAILURE.</h2>
+          <p class="lede">SANKET learns patterns before they become problems.</p>
+        </div>
+        <div class="timeline">
+          <span>320 GB</span>
+          <span>340 GB</span>
+          <span>370 GB</span>
+          <span>410 GB</span>
+          <span>450 GB</span>
+          <strong>CRITICAL STORAGE LEVEL LIKELY SOON</strong>
+        </div>
+      </section>
+
+      <section class="chapter pillars-section" data-scene="pillars">
+        <div class="story story-center pillars-heading">
+          <p class="kicker">THE FIVE PILLARS</p>
+          <h2>ONE COMPUTATIONAL ORGANISM.</h2>
+        </div>
+        <div class="pillar-core-link" aria-hidden="true"></div>
+        <div class="pillars" aria-label="The five pillars of SANKET">
+          <article class="pillar" data-pillar="0">
+            <span class="pillar-number">01</span>
+            <h3 class="pillar-title">DEVICE DNA</h3>
+          </article>
+          <article class="pillar" data-pillar="1">
+            <span class="pillar-number">02</span>
+            <h3 class="pillar-title">AI DIAGNOSIS</h3>
+          </article>
+          <article class="pillar" data-pillar="2">
+            <span class="pillar-number">03</span>
+            <h3 class="pillar-title">STORAGE INTELLIGENCE</h3>
+          </article>
+          <article class="pillar" data-pillar="3">
+            <span class="pillar-number">04</span>
+            <h3 class="pillar-title">SAFE SELF-HEALING</h3>
+          </article>
+          <article class="pillar" data-pillar="4">
+            <span class="pillar-number">05</span>
+            <h3 class="pillar-title">PREDICTIVE HEALTH</h3>
+          </article>
+        </div>
+      </section>
+
+      <section class="chapter final" id="demo" data-scene="final">
+        <div class="story story-center">
+          <p class="kicker">YOUR COMPUTER. UNDERSTOOD.</p>
+          <h2>SANKET</h2>
+          <p class="lede">AI-POWERED DIGITAL DOCTOR<br />FOR COMPUTERS</p>
+          <p class="trinity">DETECT. UNDERSTAND. HEAL.</p>
+          <a class="button magnetic" href="#hero"><span></span>EXPLORE SANKET</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
