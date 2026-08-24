@@ -1,7 +1,10 @@
 import { Router } from 'express';
-import { getDiagnosis } from '../controllers/diagnosisController.js';
+import { getDiagnosis, analyzeDiagnosis, getDiagnosisHistory } from '../controllers/diagnosisController.js';
 
 const router = Router();
+
 router.get('/', getDiagnosis);
+router.get('/history', getDiagnosisHistory);
+router.post('/analyze', analyzeDiagnosis);
 
 export default router;

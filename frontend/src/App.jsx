@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Diagnosis from './pages/Diagnosis/Diagnosis';
 import Storage from './pages/Storage/Storage';
 import Health from './pages/Health/Health';
+import Healing from './pages/Healing/Healing';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/diagnosis" element={<Diagnosis />} />
         <Route path="/storage" element={<Storage />} />
         <Route path="/health" element={<Health />} />
+        <Route path="/healing" element={<Healing />} />
       </Routes>
     </BrowserRouter>
   );

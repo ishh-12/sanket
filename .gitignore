@@ -1,0 +1,34 @@
+# Dependencies — match at any depth
+**/node_modules/
+node_modules/
+
+# Environment / secrets — never commit real credentials
+.env
+.env.local
+*.env.local
+
+# Build output
+frontend/dist/
+backend/dist/
+agent/target/
+
+# Java runtime artifacts and crash logs
+hs_err_pid*.log
+replay_pid*.log
+*.hprof
+agent/dependency-reduced-pom.xml
+
+# Agent local device state (machine-specific, not for VCS)
+sanket_device_state.properties
+sanket_device_state.txt
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor artifacts
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+nul

@@ -18,3 +18,37 @@
   line-height: 1.7;
   color: rgba(242, 240, 232, 0.72);
 }
+
+.run-btn {
+  margin-top: 1.5rem;
+  background: var(--lime);
+  color: #0d0f0e;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.run-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.run-btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.history-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.history-item .panel,
+.panel.history-item {
+  padding: 1.1rem 1.3rem;
+}

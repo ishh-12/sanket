@@ -105,6 +105,18 @@
   font-weight: 700;
 }
 
+.online.offline {
+  color: var(--amber);
+}
+
+.online.offline span {
+  background: var(--amber);
+}
+
+.desktop-nav a.active {
+  color: var(--lime);
+}
+
 @media (max-width: 820px) {
   .nav {
     grid-template-columns: 1fr auto;

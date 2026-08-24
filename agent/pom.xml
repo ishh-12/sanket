@@ -9,15 +9,47 @@
   <packaging>jar</packaging>
 
   <properties>
+    <!-- Java 21 bytecode runs on Java 21+ including Java 26. -->
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- JVM flags needed for OSHI/JNA on Java 16+ (restricted module access). -->
+    <!-- Applied to the fat-jar launcher script; also documented in README. -->
+    <jvm.args>--enable-native-access=ALL-UNNAMED</jvm.args>
   </properties>
 
   <dependencies>
+    <!-- JSON processing -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.18.9</version>
+    </dependency>
+
+    <!-- HTTP client -->
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>4.12.0</version>
+    </dependency>
+
+    <!-- OSHI for real hardware/OS information on Windows -->
+    <dependency>
+      <groupId>com.github.oshi</groupId>
+      <artifactId>oshi-core</artifactId>
+      <version>6.6.2</version>
+    </dependency>
+
+    <!-- Logging (SLF4J simple — suppressed to WARN level in Agent.java) -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.13</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.13</version>
     </dependency>
   </dependencies>
 
@@ -26,7 +58,46 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>3.13.0</version>
+        <configuration>
+          <source>21</source>
+          <target>21</target>
+          <compilerArgs>
+            <!-- Suppress the preview/incubating API warning on newer JDKs -->
+            <arg>-Xlint:-options</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
+
+      <!-- Build a self-contained fat-jar with all dependencies -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.7.1</version>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <archive>
+                <manifest>
+                  <mainClass>com.sanket.Agent</mainClass>
+                </manifest>
+                <manifestEntries>
+                  <!-- Enable JNA native access so OSHI works on Java 16+ without warnings -->
+                  <Add-Opens>java.base/java.lang=ALL-UNNAMED</Add-Opens>
+                </manifestEntries>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <finalName>sanket-agent</finalName>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

@@ -1,24 +1,37 @@
 import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import useDevice from '../../hooks/useDevice';
 import './Navbar.css';
 
 const navItems = [
-  { label: 'PROJECT', href: '#project' },
-  { label: 'SYSTEM', href: '#works' },
-  { label: 'DEMO', href: '#demo' },
+  { label: 'PROJECT', href: '/', end: true },
+  { label: 'DASHBOARD', href: '/dashboard' },
+  { label: 'DIAGNOSIS', href: '/diagnosis' },
+  { label: 'STORAGE', href: '/storage' },
+  { label: 'HEALTH', href: '/health' },
+  { label: 'HEALING', href: '/healing' },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { connected } = useDevice(30000);
 
   return (
     <header className="nav">
-      <a className="brand" href="#hero" aria-label="SANKET home">
+      <Link className="brand" to="/" aria-label="SANKET home">
         <span />
         SANKET
-      </a>
+      </Link>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navItems.map((item) => (
-          <a key={item.href} href={item.href}>{item.label}</a>
+          <NavLink
+            key={item.href}
+            to={item.href}
+            end={item.end}
+            className={({ isActive }) => (isActive ? 'active' : undefined)}
+          >
+            {item.label}
+          </NavLink>
         ))}
       </nav>
       <button
@@ -33,10 +46,15 @@ export default function Navbar() {
       </button>
       <nav className={`mobile-menu ${open ? 'open' : ''}`} id="mobile-menu" aria-label="Mobile navigation">
         {navItems.map((item) => (
-          <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>
+          <NavLink key={item.href} to={item.href} end={item.end} onClick={() => setOpen(false)}>
+            {item.label}
+          </NavLink>
         ))}
       </nav>
-      <p className="online"><span />SYSTEM ONLINE</p>
+      <p className={`online ${connected ? '' : 'offline'}`}>
+        <span />
+        {connected ? 'SYSTEM ONLINE' : 'AGENT OFFLINE'}
+      </p>
     </header>
   );
 }
