@@ -203,7 +203,7 @@ export const ingestScanResult = async (req, res) => {
         duplicateCandidates: Array.isArray(scan.duplicateCandidates) ? scan.duplicateCandidates.slice(0, 50) : [],
         stats: scan.stats || {},
       },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
+      { upsert: true, returnDocument: 'after', setDefaultsOnInsert: true }
     );
 
     return res.status(200).json({

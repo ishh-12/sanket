@@ -12,27 +12,27 @@ const connectDB = async () => {
 
   console.log('[MongoDB] Connecting...');
 
-  mongoose.connection.on('connected', () => {
-    console.log(`[MongoDB] Connected: ${mongoose.connection.host}/${mongoose.connection.name}`);
-  });
-
-  mongoose.connection.on('error', (err) => {
-    console.error(`[MongoDB] Connection error: ${err.message}`);
-  });
-
-  mongoose.connection.on('disconnected', () => {
-    console.error('[MongoDB] Disconnected from database');
-  });
-
   const connectOptions = {
     serverSelectionTimeoutMS: 10000,
     connectTimeoutMS: 10000,
     socketTimeoutMS: 45000,
   };
 
+  const setupMonitoring = () => {
+    mongoose.connection.on('error', (err) => {
+      console.error(`[MongoDB] Connection error: ${err.message}`);
+    });
+
+    mongoose.connection.on('disconnected', () => {
+      console.error('[MongoDB] Disconnected from database');
+    });
+  };
+
   // Primary attempt with the configured URI.
   try {
     await mongoose.connect(mongoUri, connectOptions);
+    console.log(`[MongoDB] Connected: ${mongoose.connection.host}/${mongoose.connection.name}`);
+    setupMonitoring();
     return; // success
   } catch (primaryError) {
     // If the primary URI uses the +srv scheme and the SRV lookup failed,
@@ -55,7 +55,8 @@ const connectDB = async () => {
       if (directUri) {
         try {
           await mongoose.connect(directUri, connectOptions);
-          console.log('[MongoDB] Connected via direct-host fallback URI.');
+          console.log(`[MongoDB] Connected via direct-host fallback URI: ${mongoose.connection.host}/${mongoose.connection.name}`);
+          setupMonitoring();
           return; // success on fallback
         } catch (fallbackError) {
           console.error(`[MongoDB] Direct-host fallback also failed: ${fallbackError.message}`);
